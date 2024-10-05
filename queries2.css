@@ -9,9 +9,14 @@
   .signalBar {
     max-width: 46rem;
     max-height: 18rem;
+    margin: 4rem 0 8rem 0;
   }
   .container {
-    gap: 8rem;
+    gap: 2rem;
+  }
+
+  .container.greetings {
+    gap: 0rem;
   }
   .highestEl {
     margin: 4rem 0;
@@ -38,6 +43,9 @@
   .bar-container {
     width: 100%;
     margin: 0 auto;
+  }
+  .convert h1 {
+    font-size: 3.2rem;
   }
 }
 
