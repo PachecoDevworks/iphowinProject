@@ -161,9 +161,11 @@ function createRec(highestRandom) {
     let rectangle = document.createElement("div");
     rectangle.classList.add("rectangle");
     rectangle.style.width = "5rem";
-    rectangle.style.height = i * 4 + "rem";
+    // rectangle.style.height = i * 4 + "rem";
+    rectangle.style.height = i * 20 + "%";
     rectangle.style.border = "1px solid rgba(56, 86, 130, 0.3)";
-    rectangle.style.borderRadius = "0.4rem";
+    // rectangle.style.borderRadius = "0.4rem";
+    rectangle.style.borderRadius = "4%";
     rectangle.style.borderRight =
       i === 5 ? "1px solid rgba(56, 86, 130, 0.3)" : "none";
     signalBar.appendChild(rectangle);
