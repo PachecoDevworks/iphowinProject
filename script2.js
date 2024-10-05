@@ -42,7 +42,8 @@ function createBar(progressType) {
       0px 0px 15px rgba(255, 0, 0, 0.3),
       0px 0px 20px rgba(255, 0, 0, 0.2)
     `;
-    bar.style.height = randomInt * 10 + "px"; // Adjust bar height instead of width
+    // bar.style.height = randomInt * 10 + "px";
+    bar.style.height = randomInt * 1.3 + "rem";
   } else if (randomInt > 6 && randomInt <= 12) {
     bar.classList.add("bar");
     progressType.appendChild(track);
@@ -55,7 +56,7 @@ function createBar(progressType) {
       0px 0px 15px rgba(255, 140, 0, 0.4),
       0px 0px 20px rgba(255, 165, 0, 0.3)
     `;
-    bar.style.height = randomInt * 10 + "px";
+    bar.style.height = randomInt * 1.3 + "rem";
   } else {
     bar.classList.add("bar");
     progressType.appendChild(track);
@@ -73,7 +74,7 @@ function createBar(progressType) {
       0px 0px 15px rgba(102, 255, 102, 0.4),
       0px 0px 20px rgba(0, 128, 0, 0.3)
     `;
-    bar.style.height = randomInt * 10 + "px";
+    bar.style.height = randomInt * 1.3 + "rem";
   }
 }
 
@@ -133,24 +134,25 @@ let toConvert = document.querySelector(".toConvert");
 if (highestRandom === arrRandom[0]) {
   // imagePath = "/img/globeColored.png";
   imagePath = "globeImg";
-  toConvert.innerHTML = "GLOBE";
+  // toConvert.innerHTML = "GLOBE";
 } else if (highestRandom === arrRandom[1]) {
   imagePath = "smartImg";
-  toConvert.innerHTML = "SMART";
+  // toConvert.innerHTML = "SMART";
 } else if (highestRandom === arrRandom[2]) {
   imagePath = "ditoImg";
-  toConvert.innerHTML = "DITO";
+  // toConvert.innerHTML = "DITO";
 }
 
 let highestElText = document.querySelector(".highestElText");
 // highestElText.innerHTML = "We suggest to use: ";
+toConvert.classList.add(imagePath);
 
 // Create the image div
 let imageDiv = document.createElement("div");
-imageDiv.classList.add(imagePath);
-highestEl.appendChild(imageDiv);
+// imageDiv.classList.add(imagePath);
+// highestEl.appendChild(imageDiv);
 
-///////////
+////////////////////////////////////
 
 let signalBar = document.querySelector(".signalBar");
 

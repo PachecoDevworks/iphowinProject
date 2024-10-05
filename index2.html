@@ -12,6 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" href="img/dsis-favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="apple-touch-icon" href="img/dsis-apple.png" />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -74,11 +78,11 @@
     </div>
     <div class="container">
       <div class="leftContainer">
-        <div class="highestEl">
+        <!-- <div class="highestEl">
           <div class="textEl">
-            <h1 class="highestElText">We suggest you use:</h1>
+            <h1 class="highestElText">Suggested Network</h1>
           </div>
-        </div>
+        </div> -->
         <div class="image-container">
           <!-- GLOBE IMG -->
           <div class="globeImg"></div>
@@ -101,23 +105,25 @@
           <!--  -->
         </div>
         <div class="convert">
-          <h1>
-            SMART
-            <span class="svg">
-              <svg
-                data-name="1-Arrow Up"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                class="icon"
-              >
-                <path
-                  d="m26.71 10.29-10-10a1 1 0 0 0-1.41 0l-10 10 1.41 1.41L15 3.41V32h2V3.41l8.29 8.29z"
-                />
-              </svg>
-            </span>
-            <span class="toConvert"> DITO </span>
-          </h1>
+          <div class="smartImg"></div>
+          <span class="svg">
+            <svg
+              data-name="1-Arrow Up"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              class="icon"
+            >
+              <path
+                d="m26.71 10.29-10-10a1 1 0 0 0-1.41 0l-10 10 1.41 1.41L15 3.41V32h2V3.41l8.29 8.29z"
+              />
+            </svg>
+          </span>
+          <div class="toConvert"></div>
         </div>
+        <button class="reRouteBtn">
+          <span>Reroute</span>
+          <i class="fa-solid fa-crown"></i>
+        </button>
       </div>
     </div>
   </body>

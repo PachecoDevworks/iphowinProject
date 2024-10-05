@@ -45,16 +45,22 @@ body {
   display: flex;
   /* align-items: center; */
   gap: 12rem;
-  max-width: 120rem;
+  max-width: 130rem;
   padding: 0 3.2rem;
   margin: 0 auto;
+  margin-top: 8rem;
+  margin-bottom: 10rem;
+}
+
+.container.greetings h1 {
+  font-size: 5.2rem;
 }
 
 .svg {
   display: inline-block;
   transform: rotate(90deg);
   height: 5rem;
-  width: 5rem;
+  width: 12rem;
 }
 
 .icon {
@@ -206,19 +212,29 @@ body {
 
 /* END OF HEADER */
 .leftContainer {
-  max-width: 60rem;
-  /* margin-left: 2rem; */
-}
-
-.righContainer {
-  width: 60rem;
+  /* max-width: 60rem; */
+  width: 62rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  /* margin-left: 2rem; */
+}
+
+.rightContainer {
+  display: grid;
+  width: 60rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  /* height: 41rem; */
+  /* grid-template-rows: 1fr 1fr;
+  justify-content: center; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
 }
 
 .signalBar {
-  margin: 8rem 0;
+  /* margin: 8rem 0; */
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -272,9 +288,9 @@ body {
 } */
 
 .progress {
-  width: 2.1rem;
-  height: 20rem;
-  border-radius: 1rem;
+  width: 3.8rem;
+  height: 26rem;
+  border-radius: 4rem;
   /* border: solid 0.3rem #4e4e4e; */
   background-color: #385682;
   position: relative;
@@ -283,9 +299,12 @@ body {
 }
 
 .progress2 {
-  width: 2.1rem;
-  height: 20rem;
-  border-radius: 1rem;
+  /* width: 2.1rem;
+  height: 20rem; */
+  /* border-radius: 1rem; */
+  width: 3.8rem;
+  height: 26rem;
+  border-radius: 4rem;
   /* border: solid 0.3rem #4e4e4e; */
   background-color: #385682;
   position: relative;
@@ -294,9 +313,9 @@ body {
 }
 
 .progress3 {
-  width: 2.1rem;
-  height: 20rem;
-  border-radius: 1rem;
+  width: 3.8rem;
+  height: 26rem;
+  border-radius: 4rem;
   /* border: solid 0.3rem #4e4e4e; */
   /* background-color: #1e1e1e; */
   background-color: #385682;
@@ -357,6 +376,7 @@ div.bar {
 .globeImg {
   background-image: url("img/globeColored.png");
   width: 100%;
+  /* height: 4rem; */
   height: 4rem;
   display: block;
   margin: 0 auto;
@@ -368,7 +388,7 @@ div.bar {
 .smartImg {
   background-image: url("img/smartColored.png");
   width: 100%;
-  height: 4rem;
+  height: 4em;
   display: block;
   margin: 0 auto;
   background-repeat: no-repeat;
@@ -396,18 +416,19 @@ div.bar {
 
 .highestElText {
   text-align: left; /* Align text to the left */
-  font-size: 2.4rem; /* Set the font size for the text */
+  font-size: 5.4rem; /* Set the font size for the text */
 }
 
 .imageDiv {
-  display: flex; /* Optional: If you want to align items inside this div */
-  align-items: center; /* Center items vertically */
-  justify-content: flex-start; /* Align items to the start */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .textEl {
   display: flex;
-  align-items: center; /* Vertically align items in the center */
+  align-items: center;
+  justify-content: center;
 }
 
 .greetings {
@@ -416,4 +437,53 @@ div.bar {
   display: block;
   /* align-items: center; */
   /* justify-content: center; */
+}
+
+/* BUTTON CSS */
+
+.reRouteBtn {
+  background: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  display: inline-block;
+  /* font-style: inherit; */
+  font-size: 2.4rem;
+  font-weight: 700;
+  width: 20rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.reRouteBtn span {
+  display: inline-block;
+  transform: skew(21deg);
+}
+
+.reRouteBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: rgb(20, 20, 20);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.reRouteBtn:hover {
+  color: #fff;
+}
+
+.reRouteBtn:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
 }

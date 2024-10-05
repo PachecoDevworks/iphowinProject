@@ -1,4 +1,18 @@
+@media (max-width: 84em) {
+  .container {
+    max-width: 120rem;
+  }
+
+  .container.greetings h1 {
+    font-size: 4.4rem;
+  }
+}
+
 @media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
   .header {
     padding: 0 3.2rem;
   }
@@ -19,21 +33,21 @@
     gap: 0rem;
   }
   .highestEl {
-    margin: 4rem 0;
+    margin: 4rem auto;
   }
   .leftContainer {
-    max-width: 50rem;
+    width: 58rem;
   }
   .globeImg {
-    height: 3rem;
+    height: 4rem;
     /* margin-left: 1rem; */
   }
   .smartImg {
-    height: 3rem;
+    height: 4rem;
     /* margin-left: 4rem; */
   }
   .ditoImg {
-    height: 3rem;
+    height: 4rem;
     /* margin-left: 7rem; */
   }
 
@@ -129,7 +143,7 @@
     font-size: 1.8rem;
   }
   .leftContainer {
-    max-width: 100vw;
+    max-width: 34rem;
     margin: 0 auto;
   }
   .bar-container {
@@ -138,20 +152,21 @@
     justify-content: center;
   }
   .globeImg {
-    height: 2.5rem;
+    height: 3.5rem;
     /* margin-left: 1rem; */
   }
   .smartImg {
-    height: 2.5rem;
+    height: 3.5rem;
     /* margin-left: 4rem; */
   }
   .ditoImg {
-    height: 2.5rem;
+    height: 3.5rem;
     /* margin-left: 7rem; */
   }
 
   .image-container {
     width: 100%;
+    gap: 3rem;
   }
   .bar-container {
     width: 100%;
