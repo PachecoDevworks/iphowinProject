@@ -136,7 +136,7 @@ body {
 .heading-secondary,
 .heading-tertiary {
   font-weight: 700;
-  color: #f1e5da;
+  color: #edf0f1;
   /* color: #45260a; */
   /* color: #343a40; */
   letter-spacing: -0.5px;
@@ -164,7 +164,8 @@ body {
   display: block;
   font-size: 1.6rem;
   font-weight: 500;
-  color: #cf711f;
+  /* color: #cf711f; */
+  color: #edf0f1;
   text-transform: uppercase;
   margin-bottom: 1.6rem;
   letter-spacing: 0.75px;

@@ -2,6 +2,10 @@
 /* HEADER */
 /**************************/
 
+.pressMe {
+  color: red;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -275,6 +279,7 @@
 
 .section-how {
   padding: 9.6rem 0;
+  background-color: #021526;
 }
 
 .step-number {
@@ -287,6 +292,7 @@
 .step-description {
   font-size: 1.8rem;
   line-height: 1.8;
+  color: #cccdcf;
 }
 
 .step-img-box {
@@ -315,20 +321,25 @@
   /* 60% of parent's width */
   padding-bottom: 60%;
 
-  background-color: #fdf2e9;
-  z-index: -2;
+  /* background-color: #fdf2e9; */
+  /* background-color: #2c2651; */
+  background-color: rgba(21, 40, 82, 0.767);
+  /* background-color: rgba(18, 30, 68, 0.336); */
+  /* z-index: -2; */
 }
 
 .step-img-box::after {
   width: 45%;
   padding-bottom: 45%;
-  background-color: #fae5d3;
-  z-index: -1;
+  /* background-color: #fae5d3; */
+  /* background-color: #1d163c; */
+  background-color: rgba(7, 24, 60, 0.603);
+  /* z-index: -1; */
 }
 
 .step-img {
   width: 35%;
-  /* z-index: 10; */
+  z-index: 10;
 }
 
 /**************************/
