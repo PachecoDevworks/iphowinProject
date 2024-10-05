@@ -50,9 +50,12 @@
 }
 
 @media (max-width: 59em) {
-  .highestElText {
-    font-size: 1.8rem;
+  html {
+    font-size: 50%;
   }
+  /* .highestElText {
+    font-size: 1.8rem;
+  } */
   .container {
     display: flex;
     flex-direction: column;
@@ -123,7 +126,7 @@
 
 @media (max-width: 37.5em) {
   .highestElText {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   .leftContainer {
     max-width: 100vw;
