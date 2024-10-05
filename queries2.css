@@ -6,6 +6,39 @@
   .main-nav-list {
     gap: 3.2rem;
   }
+  .signalBar {
+    max-width: 46rem;
+    max-height: 18rem;
+  }
+  .container {
+    gap: 8rem;
+  }
+  .highestEl {
+    margin: 4rem 0;
+  }
+  .leftContainer {
+    max-width: 50rem;
+  }
+  .globeImg {
+    height: 3rem;
+    /* margin-left: 1rem; */
+  }
+  .smartImg {
+    height: 3rem;
+    /* margin-left: 4rem; */
+  }
+  .ditoImg {
+    height: 3rem;
+    /* margin-left: 7rem; */
+  }
+
+  .image-container {
+    width: 100%;
+  }
+  .bar-container {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 59em) {

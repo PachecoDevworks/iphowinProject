@@ -223,7 +223,8 @@ body {
   align-items: flex-end;
   justify-content: center;
   gap: 0.4rem;
-  width: 500px;
+  width: 50rem;
+  height: 20rem;
 }
 .image-container {
   display: flex;
@@ -237,7 +238,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 50rem;
-  height: 300px;
+  height: 30rem;
   gap: 16rem;
   margin-top: 1rem;
   /* background-color: rgba(0, 255, 0, 0.2); */
