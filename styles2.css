@@ -179,6 +179,8 @@ body {
 /* NAV OPEN */
 .header.nav-open li a {
   color: #333;
+  /* color: #edf0f1; */
+  z-index: 9999;
 }
 
 .nav-open .main-nav {
@@ -226,7 +228,7 @@ body {
   width: 60rem;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 8rem;
   /* height: 41rem; */
   /* grid-template-rows: 1fr 1fr;
   justify-content: center; */
@@ -296,6 +298,7 @@ body {
   position: relative;
   overflow: hidden;
   transform: rotate(180deg);
+  z-index: -1;
 }
 
 .progress2 {
@@ -310,6 +313,7 @@ body {
   position: relative;
   overflow: hidden;
   transform: rotate(180deg);
+  z-index: -1;
 }
 
 .progress3 {
@@ -322,6 +326,7 @@ body {
   position: relative;
   overflow: hidden;
   transform: rotate(180deg);
+  z-index: -1;
 }
 
 div.track {
@@ -458,6 +463,7 @@ div.bar {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  z-index: 1;
 }
 
 .reRouteBtn span {
@@ -486,4 +492,8 @@ div.bar {
   left: 0;
   right: 0;
   opacity: 1;
+}
+
+.displayNone {
+  display: none;
 }

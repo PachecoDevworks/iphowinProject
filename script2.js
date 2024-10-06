@@ -10,11 +10,13 @@ let progress3 = document.querySelector(".progress3");
 // Make mobile navigation work
 const btnNavEl = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
-const barContainer = document.querySelector(".bar-container");
+// const barContainer = document.querySelector(".bar-container");
+const reRouteBtn = document.querySelector(".reRouteBtn");
 
 btnNavEl.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
-  barContainer.classList.toggle("bar-hidden");
+  // barContainer.classList.toggle("bar-hidden");
+  reRouteBtn.classList.toggle("displayNone");
 });
 
 // generate random num

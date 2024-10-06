@@ -148,11 +148,13 @@
 .icon-mobile-nav[name="close-outline"] {
   display: none;
   color: #333;
+  /* color: #edf0f1; */
 }
 
 /* NAV OPEN */
 .header.nav-open li a {
-  color: #333;
+  /* color: #333; */
+  color: #edf0f1;
 }
 
 /* STICKY NAVIGATION */
@@ -205,6 +207,7 @@
   font-size: 2rem;
   line-height: 1.6;
   margin-bottom: 4.8rem;
+  color: #e6e8e9;
 }
 
 .hero-img {
@@ -279,20 +282,28 @@
 
 .section-how {
   padding: 9.6rem 0;
-  background-color: #021526;
+  /* background-color: #021526; */
+  /* background-color: #edf0f1; */
+  background-color: #e6e8e9;
 }
 
+.howSubheading {
+  color: #354451;
+}
 .step-number {
   font-size: 8.6rem;
   font-weight: 600;
-  color: #ddd;
+  /* color: #ddd; */
+  /* color: #021526; */
+  color: #818a93;
   margin-bottom: 1.2rem;
 }
 
 .step-description {
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 1.8;
-  color: #cccdcf;
+  font-weight: 500;
+  color: #021322;
 }
 
 .step-img-box {
@@ -343,30 +354,43 @@
 }
 
 /**************************/
-/* MEALS SECTION */
+/* ISP SECTION */
 /**************************/
 
-.section-meals {
+.section-isp {
   padding: 9.6rem 0;
+  background-color: #021322;
 }
-
-.meal {
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+.section-isp .subheading {
+  font-size: 2rem;
+  color: #edf0f1;
+}
+.section-isp .heading-secondary {
+  color: #edf0f1;
+}
+.ispDescription {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  font-weight: 500;
+  color: #e6e8e9;
+}
+.isp {
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.63);
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
 }
 
-.meal:hover {
+.isp:hover {
   transform: translateY(-1.2rem);
   box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
 }
 
-.meal-content {
-  padding: 3.2rem 4.8rem 4.8rem 4.8rem;
+.isp-content {
+  padding: 2.2rem 1.8rem 2.8rem 1.8rem;
 }
 
-.meal-tags {
+.isp-tags {
   margin-bottom: 1.2rem;
   display: flex;
   gap: 0.4rem;
@@ -392,34 +416,34 @@
   background-color: #ffd43b;
 }
 
-.meal-title {
+.isp-title {
   font-size: 2.4rem;
   color: #333;
   font-weight: 600;
   margin-bottom: 3.2rem;
 }
 
-.meal-attributes {
+.isp-attributes {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.meal-attribute {
+.isp-attribute {
   font-size: 1.8rem;
   display: flex;
   align-items: center;
   gap: 1.6rem;
 }
 
-.meal-icon {
+.isp-icon {
   height: 2.4rem;
   width: 2.4rem;
   color: #e67e22;
 }
 
-.meal-img {
+.isp-img {
   width: 100%;
 }
 
