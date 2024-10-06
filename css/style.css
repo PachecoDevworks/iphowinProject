@@ -147,8 +147,8 @@
 
 .icon-mobile-nav[name="close-outline"] {
   display: none;
-  color: #333;
-  /* color: #edf0f1; */
+  /* color: #333; */
+  color: #edf0f1;
 }
 
 /* NAV OPEN */
