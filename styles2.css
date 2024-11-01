@@ -67,6 +67,7 @@ body {
   height: 100%;
   width: 100%;
   fill: currentColor;
+  z-index: -1;
 }
 
 .convert {
@@ -173,13 +174,14 @@ body {
 
 .icon-mobile-nav[name="close-outline"] {
   display: none;
-  color: #333;
+  /* color: #333; */
+  color: #edf0f1;
 }
 
 /* NAV OPEN */
 .header.nav-open li a {
-  color: #333;
-  /* color: #edf0f1; */
+  /* color: #333; */
+  color: #edf0f1;
   z-index: 9999;
 }
 
@@ -188,6 +190,7 @@ body {
   pointer-events: auto;
   visibility: visible;
   transform: translateX(0);
+  z-index: 999;
 }
 
 .bar-hidden .progress,

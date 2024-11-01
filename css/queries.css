@@ -63,9 +63,33 @@
 /**************************/
 
 @media (max-width: 59em) {
+  .sec2 {
+    grid-template-areas: unset;
+  }
+
+  .sec2 .about-text-box,
+  .sec2 .about-img-box {
+    grid-area: unset;
+  }
   html {
     /* 8px / 16px = 0.5 = 50% */
     font-size: 50%;
+  }
+  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 4.8rem;
+  }
+
+  .about-sec {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+    margin: 10rem auto 0;
+  }
+
+  .about-text-box,
+  .about-img-box {
+    text-align: center;
   }
 
   .hero {
@@ -81,6 +105,9 @@
 
   .hero-img {
     width: 60%;
+  }
+  .about-img {
+    width: 100%;
   }
 
   .delivered-meals {
@@ -230,6 +257,14 @@
   .grid {
     row-gap: 4.8rem;
   }
+  .section-about {
+    padding: 2.4rem 0 6.4rem 0;
+  }
+
+  .about-sec {
+    /* padding: 0 3.2rem; */
+    padding: 2rem 3.2rem;
+  }
 
   .grid--2-cols,
   .grid--3-cols,
@@ -253,6 +288,9 @@
 
   .hero-img {
     width: 80%;
+  }
+  .about-img {
+    width: 100%;
   }
 
   .logos img {
@@ -346,11 +384,24 @@
   .no-flexbox-gap .main-nav-list li:not(:last-child) {
     margin-right: 3.2rem;
   }
+  .about-sec {
+    gap: 4.8rem;
+  }
 }
 
 @media (max-width: 59em) {
-  .no-flexbox-gap .main-nav-list li:not(:last-child) {
+  /* .no-flexbox-gap .main-nav-list li:not(:last-child) {
     margin-right: 0;
     margin-bottom: 4.8rem;
   }
+  .about-sec {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 6.4rem;
+  }
+
+  .about-text-box,
+  .about-img-box {
+    text-align: center;
+  } */
 }
