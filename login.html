@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="DSIS is a data signal identification system that delivers seamless and accurate signal management around the clock. Tailored to your specific operational needs, it optimizes performance and efficiency 365 days a year."
+    />
+
+    <!-- Always include this line of code!!! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="img/dsis-favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    /> -->
+    <link rel="apple-touch-icon" href="img/dsis-apple.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <link rel="stylesheet" href="css/general.css" /> -->
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel="stylesheet" href="/css/styles2.css" />
+    <link rel="stylesheet" href="/css/queries2.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+    <script defer src="script2.js"></script>
+
+    <title>DSIS &mdash; Never runout of data again!</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header1">
+      <a href="index.html">
+        <img class="logo" alt="DSIS logo" src="img/DSIS2-logo.png" />
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li>
+            <a
+              class="main-nav-link-btn nav-cta"
+              id="state-btn"
+              href="index.html"
+              >Home</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+    <!-- HEADER END -->
+
+    <!-- LOADING SPINNER -->
+    <div id="loadingScreen" class="loading-screen" style="display: none">
+      <h1>WAIT MF!</h1>
+      <div class="rowLine">
+        <div class="spinner"></div>
+        <!-- Example spinner -->
+        <p>Creating user...</p>
+      </div>
+    </div>
+    <!-- LOADING SPINNER END-->
+
+    <!-- LOADING SPINNER LOGIN-->
+    <div
+      id="loadingScreenLogin"
+      class="loading-screen-login"
+      style="display: none"
+    >
+      <h1>WAIT MF!</h1>
+      <div class="rowLine">
+        <div class="spinner"></div>
+        <!-- Example spinner -->
+        <p>Loggin in...</p>
+      </div>
+    </div>
+    <!-- LOADING SPINNER END-->
+
+    <section class="section">
+      <div class="ui segment" id="user-profile">
+        <div class="ui card">
+          <div class="content">
+            <div class="header">User Profile</div>
+            <div class="meta" id="user-email">someemail@gmail.com</div>
+
+            <!-- <div class="meta" id="user-name">someemail@gmail.com</div> -->
+          </div>
+          <div class="extra content">
+            <button class="ui button red tiny">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END -->
+    <div class="wrapper" id="login-signup-form">
+      <div class="card login-size">
+        <!-- Login Form -->
+        <div class="login-form">
+          <h2>Login</h2>
+          <div class="ui error message display-none" id="login-error-message">
+            ERROR
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" id="login-email" />
+          </div>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="login-password" />
+          </div>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+          <button class="btn btn-login" id="login-btn">Login</button>
+          <p class="toggle-text">
+            Don't have an account? <a href="#" class="toggle">Register Now</a>
+          </p>
+        </div>
+      </div>
+      <!-- Registration Form -->
+      <div class="content">
+        <h2>Registration</h2>
+        <div class="ui error message display-none" id="error-message">
+          ERROR
+        </div>
+        <!-- displayNAME -->
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="User Name" id="username" />
+        </div>
+        <!-- displayNAME -->
+        <!-- <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Last Name" />
+        </div> -->
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" id="email" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" id="password" />
+        </div>
+        <button class="btn" id="signup-btn">Register</button>
+        <p class="toggle-text">
+          Already have an account? <a href="#" class="toggle">Login Now</a>
+        </p>
+      </div>
+    </div>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1 class="modalh1">Registration completed successfully!</h1>
+      <!-- <h1>Hi im a modal</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p> -->
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- <script src="login.js"></script> -->
+    <script src="/js/firebase.js" type="module"></script>
+    <script src="/js/login.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="DSIS is a data signal identification system that delivers seamless and accurate signal management around the clock. Tailored to your specific operational needs, it optimizes performance and efficiency 365 days a year."
+    />
+
+    <!-- Always include this line of code!!! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="img/dsis-favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="apple-touch-icon" href="img/dsis-apple.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <link rel="stylesheet" href="css/general.css" /> -->
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel="stylesheet" href="/css/styles2.css" />
+    <link rel="stylesheet" href="/css/queries2.css" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+
+    <title>DSIS &mdash; Never runout of data again!</title>
+  </head>
+  <body>
+    <header class="header1">
+      <a href="index.html">
+        <img class="logo" alt="DSIS logo" src="img/DSIS2-logo.png" />
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li>
+            <a class="main-nav-link" href="#how" id="homeBtn">Home</a>
+          </li>
+          <!-- <li><a class="main-nav-link" href="#how">How it works</a></li>
+          <li><a class="main-nav-link" href="#meals">About</a></li> -->
+          <!-- <li>
+            <a class="main-nav-link" href="#testimonials">Testimonials</a>
+          </li> -->
+          <!-- <li><a class="main-nav-link" href="#pricing">Pricing</a></li> -->
+          <li>
+            <a class="main-nav-link-btn nav-cta" href="#" id="logOut"
+              >Log Out</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn-mobile-nav">
+        <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+        <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+      </button>
+    </header>
+
+    <!-- START -->
+    <!-- //////////////////// -->
+    <!-- LOADING SPINNER -->
+    <div id="loadingScreen" class="loading-screen">
+      <h1>WAIT MF!</h1>
+      <div class="rowLine">
+        <div class="spinner"></div>
+        <!-- Example spinner -->
+        <p>Loading...</p>
+      </div>
+    </div>
+    <!-- LOADING SPINNER END-->
+    <div class="container greetings">
+      <h1>Hello Boss <span id="userDisplayName">Weggs!</span></h1>
+      <br />
+      <!-- <h1 class="simType">(SMART)</h1> -->
+      <h1 class="simType">(SMART) <span class="convertTo"></span></h1>
+    </div>
+    <div class="container">
+      <div class="leftContainer">
+        <!-- <div class="highestEl">
+          <div class="textEl">
+            <h1 class="highestElText">Suggested Network</h1>
+          </div>
+        </div> -->
+        <div class="image-container">
+          <!-- GLOBE IMG -->
+          <div class="globeImg"></div>
+          <!-- SMART IMG -->
+          <div class="smartImg"></div>
+          <!-- DITO IMG -->
+          <div class="ditoImg"></div>
+        </div>
+
+        <!-- container for progress bar -->
+        <div class="bar-container">
+          <div class="progress"></div>
+          <div class="progress2"></div>
+          <div class="progress3"></div>
+        </div>
+      </div>
+
+      <div class="rightContainer">
+        <div class="signalBar">
+          <!--  -->
+        </div>
+        <div class="convert">
+          <div class="smartImg"></div>
+          <span class="svg">
+            <svg
+              data-name="1-Arrow Up"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              class="icon"
+            >
+              <path
+                d="m26.71 10.29-10-10a1 1 0 0 0-1.41 0l-10 10 1.41 1.41L15 3.41V32h2V3.41l8.29 8.29z"
+              />
+            </svg>
+          </span>
+          <div class="toConvert"></div>
+        </div>
+        <button class="reRouteBtn">
+          <span>Reroute</span>
+          <i class="fa-solid fa-crown"></i>
+        </button>
+      </div>
+    </div>
+    <div id="map">
+      <!--   <iframe class="frame"></iframe> -->
+      <!--   <div class="frame"></div> -->
+    </div>
+    <script src="/js/script2.js" type="module"></script>
+  </body>
+</html>

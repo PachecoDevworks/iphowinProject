@@ -1,0 +1,197 @@
+@media (max-width: 84em) {
+  .container {
+    max-width: 120rem;
+  }
+
+  .container.greetings h1 {
+    font-size: 4.4rem;
+  }
+
+  .loading-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .loading-screen p {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  .spinner {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .header1 {
+    padding: 0 2.8rem;
+  }
+
+  .main-nav-list {
+    gap: 3.2rem;
+  }
+  .signalBar {
+    max-width: 46rem;
+    max-height: 18rem;
+    margin: 8rem 0 0 0;
+  }
+  .container {
+    gap: 2rem;
+    margin-top: 0;
+  }
+
+  .container.greetings {
+    gap: 0rem;
+    margin: 4rem 0 0 0;
+  }
+  .highestEl {
+    margin: 4rem auto;
+  }
+  .leftContainer {
+    width: 58rem;
+  }
+  .globeImg {
+    height: 4rem;
+    /* margin-left: 1rem; */
+  }
+  .smartImg {
+    height: 4rem;
+    /* margin-left: 4rem; */
+  }
+  .ditoImg {
+    height: 4rem;
+    /* margin-left: 7rem; */
+  }
+
+  .image-container {
+    width: 100%;
+  }
+  .bar-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .convert h1 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+  /* .highestElText {
+    font-size: 1.8rem;
+  } */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8rem;
+  }
+  /* MOBILE NAVIGATION */
+  .btn-mobile-nav {
+    display: block;
+    z-index: 9999;
+  }
+
+  .main-nav {
+    background-color: rgba(2, 21, 38, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in;
+
+    /* Hide navigation */
+    /* Allows NO transitions at all */
+    /* display: none; */
+
+    /* 1) Hide it visually */
+    opacity: 0;
+
+    /* 2) Make it unaccessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3) Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .main-nav-link:link,
+  .main-nav-link:visited {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .highestElText {
+    font-size: 1.8rem;
+  }
+  .leftContainer {
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+  .bar-container {
+    width: 100%;
+    gap: 12rem;
+    justify-content: center;
+  }
+  .globeImg {
+    height: 3.5rem;
+    /* margin-left: 1rem; */
+  }
+  .smartImg {
+    height: 3.5rem;
+    /* margin-left: 4rem; */
+  }
+  .ditoImg {
+    height: 3.5rem;
+    /* margin-left: 7rem; */
+  }
+
+  .image-container {
+    width: 100%;
+    gap: 3rem;
+  }
+  .bar-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 34em) {
+  /* .about-img {
+    width: 80%;
+  } */
+}
