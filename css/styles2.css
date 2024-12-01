@@ -383,7 +383,7 @@ div.bar {
 
 .globeImg {
   /* background-image: url("img/globeColored.png"); */
-  background-image: url("/img/globeColored.png");
+  background-image: url("/iphowinProject/img/globeColored.png");
   width: 100%;
   /* height: 4rem; */
   height: 4rem;
@@ -396,7 +396,7 @@ div.bar {
 
 .smartImg {
   /* background-image: url("img/smartColored.png"); */
-  background-image: url("/img/smartColored.png");
+  background-image: url("/iphowinProject/img/smartColored.png");
   width: 100%;
   height: 4em;
   display: block;
@@ -407,7 +407,7 @@ div.bar {
 }
 .ditoImg {
   /* background-image: url("img/ditoColored.png"); */
-  background-image: url("/img/ditoColored.png");
+  background-image: url("/iphowinProject/img/ditoColored.png");
   width: 100%;
   height: 4rem;
   display: block;
