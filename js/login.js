@@ -128,7 +128,7 @@ const loginButtonPressed = async (e) => {
       loginPassword.value
     );
     alert("Successful");
-    window.location.href = "index.html";
+    window.location.href = "index2.html";
     loginEmail.value = "";
     loginPassword.value = "";
 
