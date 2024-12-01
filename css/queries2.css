@@ -20,6 +20,14 @@
     width: 80px;
     height: 80px;
   }
+
+  .header1 {
+    height: 8rem;
+  }
+
+  .logo {
+    height: 4.2rem;
+  }
 }
 
 @media (max-width: 75em) {
@@ -29,9 +37,6 @@
 
   .header1 {
     padding: 0 2.8rem;
-  }
-  .header1 {
-    height: 8rem;
   }
 
   .main-nav-list {
