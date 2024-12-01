@@ -11,6 +11,8 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  sendEmailVerification,
+  sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const auth = getAuth();
@@ -39,6 +41,12 @@ const testName = document.getElementById("testName");
 const loginErrorMsg = document.getElementById("login-error-message");
 const loadingScreen = document.getElementById("loadingScreen");
 const loadingScreenLogin = document.getElementById("loadingScreenLogin");
+
+// NEW
+const resetPasswordForm = document.getElementById("reset-password-form");
+const forgotPassBtn = document.getElementById("forgotPassBtn");
+const resetPasswordBtn = document.getElementById("reset-password-btn");
+const resetPasswordEmail = document.getElementById("reset-password-email");
 
 // MODAL
 
@@ -80,31 +88,27 @@ const signUpButtonPressed = async (e) => {
       password.value
     );
     // for displayName
-    // Set the display name using updateProfile
     await updateProfile(userCredential.user, {
       displayName: username.value,
     });
     console.log(userCredential);
-    // modalh1.innerHTML = userCredential.user.displayName;
-    // loginSignUpFormView.style.display = "none";
-    // userProfileView.style.display = "block";
-    // UIuserEmail.innerHTML = userCredential.user.email;
+
+    await sendEmailVerification(userCredential.user);
 
     ////////
     // manually logged out the user
-    await signOut(auth);
-    console.log("User created and logged out.");
+    // await signOut(auth);
+    // console.log("User created and logged out.");
 
     // SPINNER
     loadingScreen.style.display = "none";
 
     // MODAL
     modal();
-    // setTimeout(() => {
-    //   alert("Successful");
-    // }, 500);
-    // userName.innerHTML = userCredential.user.displayName;
-    // console.log("User display name set to:", userCredential.user.displayName);
+    await signOut(auth);
+
+    winddow.location.href = "login.html";
+    //
   } catch (error) {
     console.log(error.code);
     UIErrorMessage.innerHTML = formatErrorMessage(error.code, "signup");
@@ -122,12 +126,21 @@ const loginButtonPressed = async (e) => {
   console.log(loginEmail.value);
   console.log(loginPassword.value);
   try {
-    await signInWithEmailAndPassword(
+    const userCredential = await signInWithEmailAndPassword(
       auth,
       loginEmail.value,
       loginPassword.value
     );
-    alert("Successful");
+    const user = userCredential.user;
+    if (!user.emailVerified) {
+      alert("You must verify your email before logging in.");
+
+      await signOut(auth);
+      window.location.href = "login.html";
+      loadingScreenLogin.style.display = "none";
+      return;
+    }
+    // alert("Successful");
     window.location.href = "index2.html";
     loginEmail.value = "";
     loginPassword.value = "";
@@ -143,9 +156,51 @@ const loginButtonPressed = async (e) => {
   }
 };
 
+// NEW
+const loadingScreenReset = document.getElementById("loadingScreenReset");
+const resetErrorMessage = document.getElementById("reset-error-message");
+
+const backLoginBtn = document.getElementById("back-login-btn");
+
+const backLoginPressed = () => {
+  loginSignUpFormView.style.display = "block";
+  resetPasswordForm.style.display = "none";
+};
+
+backLoginBtn.addEventListener("click", backLoginPressed);
+
+const forgotPasswordButtonPressed = () => {
+  loginSignUpFormView.style.display = "none";
+  resetPasswordForm.style.display = "block";
+};
+
+const resetPasswordButtonPressed = async (e) => {
+  e.preventDefault();
+
+  try {
+    console.log(resetPasswordEmail.value);
+    await sendPasswordResetEmail(auth, resetPasswordEmail.value);
+    resetErrorMessage.innerHTML = `We've sent a link to reset your password to ${resetPasswordEmail.value}`;
+    alert("Reset password email has been sent!");
+    resetErrorMessage.style.color = "#2ec246";
+    resetErrorMessage.classList.remove("display-none");
+
+    resetPasswordEmail.value = "";
+  } catch (error) {
+    resetErrorMessage.innerHTML = "Please provide a valid registered email";
+    resetErrorMessage.style.color = "#9f3a38";
+    resetErrorMessage.classList.remove("display-none");
+    console.log(error.code);
+  }
+};
+// END NEW
+
 // CALLBACK
 signUpBtn.addEventListener("click", signUpButtonPressed);
 loginBtn.addEventListener("click", loginButtonPressed);
+
+forgotPassBtn.addEventListener("click", forgotPasswordButtonPressed);
+resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
 
 const formatErrorMessage = (errorCode, action) => {
   let message = "";
@@ -166,7 +221,8 @@ const formatErrorMessage = (errorCode, action) => {
   } else if (action === "login") {
     if (
       errorCode === "auth/invalid-email" ||
-      errorCode === "auth/missing-password"
+      errorCode === "auth/missing-password" ||
+      errorCode === "auth/invalid-credential"
     ) {
       message = "Email or Password is incorrect";
     } else if (errorCode === "auth/user-not-found") {
@@ -188,11 +244,6 @@ const modal = () => {
     overlayEl.classList.add("hidden");
     location.reload();
   };
-
-  // Uncomment and use this if you want to bind openModal to specific elements
-  // showModalEl.forEach((element) => {
-  //   element.addEventListener("click", openModal);
-  // });
 
   closeModalEl.addEventListener("click", closeModal);
   overlayEl.addEventListener("click", closeModal);

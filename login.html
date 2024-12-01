@@ -123,22 +123,22 @@
     </div>
     <!-- LOADING SPINNER END-->
 
-    <!-- <section class="section">
-      <div class="ui segment" id="user-profile">
-        <div class="ui card">
-          <div class="content">
-            <div class="header">User Profile</div>
-            <div class="meta" id="user-email">someemail@gmail.com</div> -->
-
-    <!-- <div class="meta" id="user-name">someemail@gmail.com</div> -->
-    <!-- </div>
-          <div class="extra content">
-            <button class="ui button red tiny">Log Out</button>
-          </div>
-        </div>
+    <!-- PASSWORD RESET SPINNER LOGIN-->
+    <div
+      id="loadingScreenReset"
+      class="loading-screen-login"
+      style="display: none"
+    >
+      <h1>WAIT MF!</h1>
+      <div class="rowLine">
+        <div class="spinner"></div>
+        <!-- Example spinner -->
+        <p>Sending email...</p>
       </div>
-    </section> -->
-    <!-- END -->
+    </div>
+    <!-- PASSWORD RESET SPINNER END-->
+
+    <!-- WRAPPER -->
     <div class="wrapper" id="login-signup-form">
       <div class="card login-size">
         <!-- Login Form -->
@@ -173,11 +173,7 @@
           <i class="fas fa-user"></i>
           <input type="text" placeholder="User Name" id="username" />
         </div>
-        <!-- displayNAME -->
-        <!-- <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" placeholder="Last Name" />
-        </div> -->
+
         <div class="input-group">
           <i class="fas fa-envelope"></i>
           <input type="email" placeholder="Email" id="email" />
@@ -192,21 +188,41 @@
         </p>
       </div>
     </div>
+    <!-- MODAL -->
     <div class="modal hidden">
       <button class="close-modal">&times;</button>
-      <h1 class="modalh1">Registration completed successfully!</h1>
-      <!-- <h1>Hi im a modal</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p> -->
+      <h1 class="modalh1">
+        A verification email has been sent. Please check your inbox.
+      </h1>
+      <h5 class="modal-text">Hit refresh after verification</h5>
     </div>
     <div class="overlay hidden"></div>
+    <!-- END MODAL -->
+
+    <!-- FORGOT PASSWORD -->
+    <div class="wrapper" id="reset-password-form">
+      <div class="card login-size">
+        <div class="login-form">
+          <h2>Reset Your Password</h2>
+          <p>Enter your email address to reset your password</p>
+          <div class="ui error message display-none" id="reset-error-message">
+            ERROR
+          </div>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" id="reset-password-email" />
+          </div>
+
+          <button class="btn btn-login" id="reset-password-btn">
+            Reset Password
+          </button>
+          <a href="#" class="login-toggle" id="back-login-btn">Login Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- FORGOT PASSWORD END-->
+
+    <!-- ///// -->
     <link rel="stylesheet" href="/iphowinProject/css/login.css" />
     <!-- <script src="/js/firebase.js" type="module"></script> -->
     <!-- <script src="/js/login.js" type="module"></script> -->

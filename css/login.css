@@ -310,3 +310,75 @@ body {
     width: 65%;
   }
 }
+
+/* NEW */
+
+/* BTN */
+.resend-btn {
+  background: linear-gradient(
+    to right,
+    #ff4e50,
+    #f9d423
+  ); /* Gradient from red to orange */
+  color: white; /* Text color */
+  border: none;
+  margin-top: 10px;
+  border-radius: 25px; /* Rounded edges */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out,
+    transform 0.5s ease-in-out; /* Smooth and fluid transitions */
+}
+
+.resend-btn:hover {
+  background: linear-gradient(
+    to right,
+    #f9d423,
+    #ff4e50
+  ); /* Reverse the gradient */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: scale(1.05); /* Slightly enlarge */
+}
+
+.resend-btn:active {
+  background: linear-gradient(
+    to right,
+    #ff3b3b,
+    #f9b323
+  ); /* Slightly darker gradient on active */
+  transform: scale(0.98); /* Slightly shrink on click */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* Minimized shadow */
+}
+
+/* NEW */
+#reset-password-form {
+  display: none;
+}
+
+.modal-text {
+  color: #333;
+  font-size: 14px;
+}
+
+.login-toggle {
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+}
+
+.login-toggle {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.login-toggle:hover {
+  text-decoration: underline;
+}
+.display-block {
+  display: block;
+}

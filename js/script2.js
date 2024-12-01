@@ -16,16 +16,6 @@ const userDisplayName = document.getElementById("userDisplayName");
 const loadingScreen = document.getElementById("loadingScreen");
 const homeBtn = document.getElementById("homeBtn");
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     console.log("User is signed in: ", user);
-//     //Changing some of the status and buttons
-//     userDisplayName.innerHTML = user.displayName;
-//   } else {
-//     console.log("No user is signed in.");
-//   }
-//   //   mainView.classList.remove("loading");
-// });
 onAuthStateChanged(auth, (user) => {
   loadingScreen.style.display = "flex";
 
@@ -60,10 +50,6 @@ const homeBtnPressed = () => {
 // CALLBACK
 logOut.addEventListener("click", logOutBtnPressed);
 homeBtn.addEventListener("click", homeBtnPressed);
-
-// homeBtn.addEventListener("click", () => {
-//   window.location.href = "index.html";
-// });
 
 ///////////////
 
