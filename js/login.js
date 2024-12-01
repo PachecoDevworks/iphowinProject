@@ -13,6 +13,9 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const auth = getAuth();
@@ -47,6 +50,8 @@ const resetPasswordForm = document.getElementById("reset-password-form");
 const forgotPassBtn = document.getElementById("forgotPassBtn");
 const resetPasswordBtn = document.getElementById("reset-password-btn");
 const resetPasswordEmail = document.getElementById("reset-password-email");
+const loginGoogleBtn = document.getElementById("login-google-btn");
+const loginFacebookBtn = document.getElementById("login-facebook-btn");
 
 // MODAL
 
@@ -195,12 +200,96 @@ const resetPasswordButtonPressed = async (e) => {
 };
 // END NEW
 
+// GOOGLE
+const loginGoogleBtnPressed = async (e) => {
+  e.preventDefault();
+  const googleProvider = new GoogleAuthProvider();
+  loadingScreen.style.display = "flex";
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    console.log(`Signed in as: ${user.displayName} (${user.email})`);
+    console.log("Redirecting to index.html...");
+    alert(`Signed in as: ${user.displayName}`);
+
+    openModal();
+
+    modalh1.innerHTML = "Successfully loged in using Google!";
+    document.querySelector(
+      ".modal-text"
+    ).innerHTML = `Signed in as: ${user.displayName}`;
+    closeModalEl.addEventListener("click", () => {
+      closeModal();
+      window.location.href = "index.html";
+    });
+    overlayEl.addEventListener("click", () => {
+      closeModal();
+      window.location.href = "index.html";
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
+        closeModal();
+        window.location.href = "index.html";
+      }
+    });
+    loadingScreen.style.display = "none";
+  } catch (error) {
+    alert(error.code);
+    console.log(error.code);
+  }
+};
+
+// FACEBOOK
+const loginFacebookBtnPressed = async (e) => {
+  e.preventDefault();
+  const facebookProvider = new FacebookAuthProvider();
+  loadingScreen.style.display = "flex";
+  try {
+    const result = await signInWithPopup(auth, facebookProvider);
+    const user = result.user;
+    console.log(`Signed in as: ${user.displayName} (${user.email})`);
+    console.log("Redirecting to index.html...");
+    alert(`Signed in as: ${user.displayName}`);
+
+    openModal();
+
+    modalh1.innerHTML = "Successfully loged in using Facebook!";
+    document.querySelector(
+      ".modal-text"
+    ).innerHTML = `Signed in as: ${user.displayName}`;
+    closeModalEl.addEventListener("click", () => {
+      closeModal();
+      window.location.href = "index.html";
+    });
+    overlayEl.addEventListener("click", () => {
+      closeModal();
+      window.location.href = "index.html";
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
+        closeModal();
+        window.location.href = "index.html";
+      }
+    });
+    loadingScreen.style.display = "none";
+    // window.location.href = "index.html";
+  } catch (error) {
+    alert(error.code);
+    console.log(error.code);
+  }
+};
+
 // CALLBACK
 signUpBtn.addEventListener("click", signUpButtonPressed);
 loginBtn.addEventListener("click", loginButtonPressed);
 
 forgotPassBtn.addEventListener("click", forgotPasswordButtonPressed);
 resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
+
+loginGoogleBtn.addEventListener("click", loginGoogleBtnPressed);
+loginFacebookBtn.addEventListener("click", loginFacebookBtnPressed);
 
 const formatErrorMessage = (errorCode, action) => {
   let message = "";
@@ -233,18 +322,19 @@ const formatErrorMessage = (errorCode, action) => {
   return message;
 };
 
+// MODAL
+const openModal = () => {
+  modalEl.classList.remove("hidden");
+  overlayEl.classList.remove("hidden");
+};
+
+const closeModal = () => {
+  modalEl.classList.add("hidden");
+  overlayEl.classList.add("hidden");
+  location.reload();
+};
+
 const modal = () => {
-  const openModal = () => {
-    modalEl.classList.remove("hidden");
-    overlayEl.classList.remove("hidden");
-  };
-
-  const closeModal = () => {
-    modalEl.classList.add("hidden");
-    overlayEl.classList.add("hidden");
-    location.reload();
-  };
-
   closeModalEl.addEventListener("click", closeModal);
   overlayEl.addEventListener("click", closeModal);
 
