@@ -44,9 +44,9 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("User is signed in: ", user);
 
-    const displayName = user.displayName || "No display name set";
-    userDisplayName.innerHTML = displayName;
-    loadingScreen.style.display = "none";
+    // const displayName = user.displayName || "No display name set";
+    // userDisplayName.innerHTML = displayName;
+    // loadingScreen.style.display = "none";
 
     // NEW
     const docRef = doc(db, "users", user.uid);
@@ -58,6 +58,8 @@ onAuthStateChanged(auth, async (user) => {
       updatePhone.value = docSnap.data().phone;
       emailUpdate.value = docSnap.data().email;
       userEmailForm.innerHTML = docSnap.data().email;
+      userDisplayName.innerHTML = userNameUpdate.value;
+      loadingScreen.style.display = "none";
     } catch (error) {
       console.log(error.code);
     }
