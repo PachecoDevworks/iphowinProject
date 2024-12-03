@@ -894,3 +894,43 @@ input[type="number"] {
   transform: scale(0.98);
   color: #003c8f; /* Change color when the link is active */
 }
+
+/* New */
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5rem;
+  /* height: 100%; */
+}
+
+.image_outer_container {
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  border-radius: 50%;
+}
+
+.image_inner_container {
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
+}
+
+.image_inner_container img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.green_icon {
+  background-color: #4cd137;
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
+  height: 30px;
+  width: 30px;
+  border: 5px solid white;
+  border-radius: 50%;
+}

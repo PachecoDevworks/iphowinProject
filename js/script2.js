@@ -16,8 +16,16 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+
 const auth = getAuth(app);
 const db = getFirestore();
+const storage = getStorage();
+let file = null;
 
 const logOut = document.getElementById("logOut");
 const userDisplayName = document.getElementById("userDisplayName");
@@ -38,11 +46,14 @@ const userEmailForm = document.getElementById("user-email-form");
 const updateUserBtn = document.getElementById("update-user-btn");
 const loadingScreenUpdate = document.getElementById("loadingScreenUpdate");
 
+const imageUpload = document.getElementById("imageUpload");
+
 onAuthStateChanged(auth, async (user) => {
   loadingScreen.style.display = "flex";
 
   if (user) {
     console.log("User is signed in: ", user);
+    console.log("User is signed in: ", user.uid);
 
     // const displayName = user.displayName || "No display name set";
     // userDisplayName.innerHTML = displayName;
@@ -58,6 +69,24 @@ onAuthStateChanged(auth, async (user) => {
       updatePhone.value = docSnap.data().phone;
       emailUpdate.value = docSnap.data().email;
       userEmailForm.innerHTML = docSnap.data().email;
+
+      const fileRef = ref(
+        storage,
+        `user_images/${user.uid}/${user.uid}-profile-picture`
+      );
+      console.log(fileRef);
+      try {
+        const url = await getDownloadURL(fileRef);
+        console.log(url);
+
+        imagePicked.src = url;
+      } catch (error) {
+        console.log("Error getting profile picture:", error);
+        imagePicked.src =
+          "https://images.unsplash.com/photo-1719937051230-8798ae2ebe86?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      }
+
+      // /////////
       userDisplayName.innerHTML = userNameUpdate.value;
       loadingScreen.style.display = "none";
     } catch (error) {
@@ -129,11 +158,31 @@ const updateUserBtnPressed = async (e) => {
       phone: updatePhone.value,
       email: emailUpdate.value,
     });
+    if (file) {
+      const storageRef = ref(
+        storage,
+        `user_images/${auth.currentUser.uid}/${file.name}`
+      );
+      await uploadBytes(storageRef, file);
+      console.log("UPLOADED");
+    } else {
+      console.log("No file selected, skipping upload.");
+    }
     loadingScreenUpdate.style.display = "none";
     closeModal();
   } catch (error) {
     console.log(error.code);
     loadingScreenUpdate.style.display = "none";
+  }
+};
+
+const imageUploadChosen = (e) => {
+  file = e.target.files[0];
+  console.log("File selected for upload:", file);
+  if (file) {
+    console.log("File selected:", file.name);
+  } else {
+    console.log("No file selected.");
   }
 };
 
@@ -143,6 +192,8 @@ homeBtn.addEventListener("click", homeBtnPressed);
 
 updateProfileBtn.addEventListener("click", updateProfilePressed);
 updateUserBtn.addEventListener("click", updateUserBtnPressed);
+
+imageUpload.addEventListener("change", imageUploadChosen);
 ///////////////
 
 // FOR RANDOM FREQUENCY

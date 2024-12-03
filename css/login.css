@@ -22,7 +22,7 @@ body {
 }
 
 .wrapper {
-  height: 46rem; /* 430px */
+  height: 52rem; /* 430px */
   width: 32rem; /* 320px */
   position: absolute;
   top: 50%;
@@ -615,4 +615,21 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* Suppress warning: Required for old Firefox */
   appearance: textfield;
+}
+
+/* NEW  */
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  margin-right: 10px; /* Space between the icon and the input */
+}
+
+.input-group input[type="file"] {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
 }

@@ -25,15 +25,23 @@ import {
   setDoc,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+
 const auth = getAuth();
 const db = getFirestore();
+const storage = getStorage();
+let file = null;
 
 // START HERE
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const signUpBtn = document.getElementById("signup-btn");
-const UIErrorMessage = document.getElementById("error-message");
+
 const loginEmail = document.getElementById("login-email");
 const loginPassword = document.getElementById("login-password");
 const loginBtn = document.getElementById("login-btn");
@@ -62,6 +70,8 @@ const loginGoogleBtn = document.getElementById("login-google-btn");
 const loginFacebookBtn = document.getElementById("login-facebook-btn");
 
 const phone = document.getElementById("phone");
+
+const imageUpload = document.getElementById("imageUpload");
 
 // MODAL
 
@@ -118,9 +128,17 @@ const signUpButtonPressed = async (e) => {
       phone: phone.value,
       email: email.value,
     });
-    // manually logged out the user
-    // await signOut(auth);
-    // console.log("User created and logged out.");
+    ////
+
+    if (file) {
+      const storageRef = ref(
+        storage,
+        `user_images/${userCredential.user.uid}/${file.name}`
+      );
+      await uploadBytes(storageRef, file);
+    } else {
+      console.log("No file selected, skipping upload.");
+    }
 
     // SPINNER
     loadingScreen.style.display = "none";
@@ -129,12 +147,10 @@ const signUpButtonPressed = async (e) => {
     modal();
     await signOut(auth);
 
-    winddow.location.href = "login.html";
     //
   } catch (error) {
     console.log(error.code);
-    UIErrorMessage.innerHTML = formatErrorMessage(error.code, "signup");
-    UIErrorMessage.classList.remove("display-none");
+
     loadingScreen.style.display = "none";
   }
 };
@@ -329,6 +345,10 @@ const loginFacebookBtnPressed = async (e) => {
   }
 };
 
+const imageUploadChosen = (e) => {
+  file = e.target.files[0];
+};
+
 // CALLBACK
 signUpBtn.addEventListener("click", signUpButtonPressed);
 loginBtn.addEventListener("click", loginButtonPressed);
@@ -338,6 +358,8 @@ resetPasswordBtn.addEventListener("click", resetPasswordButtonPressed);
 
 loginGoogleBtn.addEventListener("click", loginGoogleBtnPressed);
 loginFacebookBtn.addEventListener("click", loginFacebookBtnPressed);
+
+imageUpload.addEventListener("change", imageUploadChosen);
 
 const formatErrorMessage = (errorCode, action) => {
   let message = "";
