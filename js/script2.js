@@ -48,6 +48,7 @@ const updateUserBtn = document.getElementById("update-user-btn");
 const loadingScreenUpdate = document.getElementById("loadingScreenUpdate");
 
 const imageUpload = document.getElementById("imageUpload");
+const imagePicked = document.getElementById("imagePicked");
 
 onAuthStateChanged(auth, async (user) => {
   loadingScreen.style.display = "flex";
