@@ -20,6 +20,7 @@ import {
   getStorage,
   ref,
   uploadBytes,
+  getDownloadUrl,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
 const auth = getAuth(app);
