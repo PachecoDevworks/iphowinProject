@@ -21,6 +21,7 @@ import {
 import {
   getFirestore,
   doc,
+  getDoc,
   setDoc,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
@@ -229,6 +230,21 @@ const loginGoogleBtnPressed = async (e) => {
     console.log("Redirecting to index.html...");
     alert(`Signed in as: ${user.displayName}`);
 
+    // /////////////////
+    const userName = user.displayName || user.email || `User ${user.uid}`;
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      await setDoc(docRef, {
+        name: userName, // Use Google Display Name or fallback name
+        phone: "", // Empty or prompt for phone later
+        email: user.email,
+      });
+    } else {
+      console.log("User data already exists in Firestore.");
+    }
+    // //////////////
+
     openModal();
 
     modalh1.innerHTML = "Successfully loged in using Google!";
@@ -268,6 +284,21 @@ const loginFacebookBtnPressed = async (e) => {
     console.log(`Signed in as: ${user.displayName} (${user.email})`);
     console.log("Redirecting to index.html...");
     alert(`Signed in as: ${user.displayName}`);
+
+    // /////////////////
+    const userName = user.displayName || user.email || `User ${user.uid}`;
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      await setDoc(docRef, {
+        name: userName, // Use Facebook Display Name or fallback name
+        phone: "", // Empty or prompt for phone later
+        email: user.email,
+      });
+    } else {
+      console.log("User data already exists in Firestore.");
+    }
+    // //////////////
 
     openModal();
 
