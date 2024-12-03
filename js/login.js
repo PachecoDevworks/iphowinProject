@@ -103,7 +103,6 @@ onAuthStateChanged(auth, (user) => {
 // CREATEUSER REGISTER
 const signUpButtonPressed = async (e) => {
   e.preventDefault();
-
   loadingScreen.style.display = "flex";
 
   try {
@@ -112,7 +111,7 @@ const signUpButtonPressed = async (e) => {
       email.value,
       password.value
     );
-    // for displayName
+
     await updateProfile(userCredential.user, {
       displayName: username.value,
     });
@@ -120,38 +119,35 @@ const signUpButtonPressed = async (e) => {
 
     await sendEmailVerification(userCredential.user);
 
-    ////////
-    // FIRESTORE DB
     const docRef = doc(db, "users", userCredential.user.uid);
     await setDoc(docRef, {
       name: username.value,
       phone: phone.value,
       email: email.value,
     });
-    ////
 
     if (file) {
+      const customFileName = `${userCredential.user.uid}-profile-picture`;
       const storageRef = ref(
         storage,
-        `user_images/${userCredential.user.uid}/${file.name}`
+        `user_images/${userCredential.user.uid}/${customFileName}`
       );
+
       await uploadBytes(storageRef, file);
+      console.log("Profile picture uploaded");
     } else {
       console.log("No file selected, skipping upload.");
     }
 
-    // SPINNER
     loadingScreen.style.display = "none";
-
-    // MODAL
     modal();
     await signOut(auth);
-
-    //
   } catch (error) {
-    console.log(error.code);
-
+    console.log("Error signing up:", error.code);
     loadingScreen.style.display = "none";
+
+    UIErrorMessage.innerHTML = formatErrorMessage(error.code, "signup");
+    UIErrorMessage.classList.remove("display-none");
   }
 };
 
@@ -347,6 +343,7 @@ const loginFacebookBtnPressed = async (e) => {
 
 const imageUploadChosen = (e) => {
   file = e.target.files[0];
+  console.log("File selected for upload:", file);
 };
 
 // CALLBACK
