@@ -32,7 +32,6 @@ const logOut = document.getElementById("logOut");
 const userDisplayName = document.getElementById("userDisplayName");
 const loadingScreen = document.getElementById("loadingScreen");
 const homeBtn = document.getElementById("homeBtn");
-
 // NEW
 const updateDataForm = document.getElementById("update-data-form");
 const updateProfileBtn = document.getElementById("update-profile");
@@ -56,10 +55,6 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("User is signed in: ", user);
     console.log("User is signed in: ", user.uid);
-
-    // const displayName = user.displayName || "No display name set";
-    // userDisplayName.innerHTML = displayName;
-    // loadingScreen.style.display = "none";
 
     // NEW
     const docRef = doc(db, "users", user.uid);
@@ -129,6 +124,11 @@ const closeModal = () => {
 
   ionIcon.style.display = "block";
 
+  // ionIcon.style.display = "none";
+  // btnNavEl.addEventListener("click", function () {
+  //   headerEl.classList.toggle("nav-open");
+  //   reRouteBtn.classList.toggle("displayNone");
+  // });
   location.reload();
 };
 
@@ -152,6 +152,7 @@ const updateProfilePressed = () => {
 
 const updateUserBtnPressed = async (e) => {
   e.preventDefault();
+  const user = auth.currentUser;
   const docRef = doc(db, "users", auth.currentUser.uid);
   loadingScreenUpdate.style.display = "flex";
   try {
@@ -160,10 +161,16 @@ const updateUserBtnPressed = async (e) => {
       phone: updatePhone.value,
       email: emailUpdate.value,
     });
+    // user.uid-profile-picture
     if (file) {
+      const customFileName = `${user.uid}-profile-picture`;
+      // const storageRef = ref(
+      //   storage,
+      //   `user_images/${auth.currentUser.uid}/${file.name}`
+      // );
       const storageRef = ref(
         storage,
-        `user_images/${auth.currentUser.uid}/${file.name}`
+        `user_images/${user.uid}/${customFileName}` // Firebase path: user_images/{user.uid}/{customFileName}
       );
       await uploadBytes(storageRef, file);
       console.log("UPLOADED");
@@ -176,8 +183,10 @@ const updateUserBtnPressed = async (e) => {
     console.log(error.code);
     loadingScreenUpdate.style.display = "none";
   }
+  // console.log(userNameUpdate.value);
+  // console.log(updatePhone.value);
+  // console.log(emailUpdate.value);
 };
-
 const imageUploadChosen = (e) => {
   file = e.target.files[0];
   console.log("File selected for upload:", file);
@@ -196,6 +205,7 @@ updateProfileBtn.addEventListener("click", updateProfilePressed);
 updateUserBtn.addEventListener("click", updateUserBtnPressed);
 
 imageUpload.addEventListener("change", imageUploadChosen);
+
 ///////////////
 
 // FOR RANDOM FREQUENCY
@@ -219,9 +229,7 @@ const reRouteBtn = document.querySelector(".reRouteBtn");
 
 btnNavEl.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
-  // barContainer.classList.toggle("bar-hidden");
   reRouteBtn.classList.toggle("displayNone");
-  console.log("testest");
 });
 
 // generate random num
