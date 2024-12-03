@@ -44,9 +44,9 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("User is signed in: ", user);
 
-    // const displayName = user.displayName || "No display name set";
-    // userDisplayName.innerHTML = displayName;
-    // loadingScreen.style.display = "none";
+    const displayName = user.displayName || "No display name set";
+    userDisplayName.innerHTML = displayName;
+    loadingScreen.style.display = "none";
 
     // NEW
     const docRef = doc(db, "users", user.uid);
