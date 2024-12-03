@@ -99,6 +99,15 @@
       <br />
       <!-- <h1 class="simType">(SMART)</h1> -->
       <h1 class="simType">(SMART) <span class="convertTo"></span></h1>
+      <div class="surveyDiv">
+        <h2 class="surveyH2">
+          Your input matters! Kindly take a moment to complete the survey.
+        </h2>
+
+        <a href="https://forms.gle/bjzAFpGb46Gv4JFm7" class="google-form-link">
+          <h2>Click Here to Take the Survey!</h2></a
+        >
+      </div>
     </div>
     <div class="container">
       <div class="leftContainer">
@@ -156,6 +165,59 @@
     </div>
     <!-- <script src="/js/script2.js" type="module"></script> -->
     <!-- FOR GIT HUB -->
+
+    <!-- MODAL -->
+    <div class="modal hidden"></div>
+    <!-- UPDATE DATA FORM -->
+    <div class="wrapper" id="update-data-form">
+      <div class="card login-size">
+        <button class="close-modal">&times;</button>
+        <div class="login-form">
+          <h2>Update Profile</h2>
+          <p id="user-email-form">@someEmail</p>
+          <br />
+          <div class="ui error message display-none" id="reset-error-message">
+            ERROR
+          </div>
+          <!-- USER -->
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="User Name" id="username-update" />
+          </div>
+          <!-- USER -->
+          <!-- PHONE -->
+          <div class="input-group">
+            <i class="fas fa-phone"></i>
+            <input type="number" placeholder="Phone" id="phone-update" />
+          </div>
+          <!-- PHONE -->
+          <!-- EMAIL -->
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="Email" id="email-update" />
+          </div>
+          <!-- EMAIL -->
+
+          <button class="btn btn-login" id="update-user-btn">UPDATE</button>
+          <br />
+          <!-- <a href="#" class="login-toggle" id="back-home-btn">Back</a> -->
+        </div>
+      </div>
+    </div>
+    <!-- UPDATE DATA FORM-->
+    <div class="overlay hidden"></div>
+
+    <!-- MODAL -->
+
+    <!-- LOADING SPINNER LOGOUT -->
+    <div id="loadingScreenUpdate" class="loading-screen" style="display: none">
+      <h1>WAIT MF!</h1>
+      <div class="rowLine">
+        <div class="spinner"></div>
+        <!-- Example spinner -->
+        <p>Updating...</p>
+      </div>
+    </div>
 
     <script src="/iphowinProject/js/script2.js" type="module"></script>
     <!-- FOR GIT HUB END -->

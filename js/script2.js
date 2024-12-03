@@ -9,14 +9,36 @@ import {
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
 const auth = getAuth(app);
+const db = getFirestore();
 
 const logOut = document.getElementById("logOut");
 const userDisplayName = document.getElementById("userDisplayName");
 const loadingScreen = document.getElementById("loadingScreen");
 const homeBtn = document.getElementById("homeBtn");
 
-onAuthStateChanged(auth, (user) => {
+// NEW
+const updateDataForm = document.getElementById("update-data-form");
+const updateProfileBtn = document.getElementById("update-profile");
+const closeModalEl = document.querySelector(".close-modal");
+const modalEl = document.querySelector(".modal");
+const overlayEl = document.querySelector(".overlay");
+const ionIcon = document.getElementById("ion-icon");
+const updatePhone = document.getElementById("phone-update");
+const emailUpdate = document.getElementById("email-update");
+const userNameUpdate = document.getElementById("username-update");
+const userEmailForm = document.getElementById("user-email-form");
+const updateUserBtn = document.getElementById("update-user-btn");
+const loadingScreenUpdate = document.getElementById("loadingScreenUpdate");
+
+onAuthStateChanged(auth, async (user) => {
   loadingScreen.style.display = "flex";
 
   if (user) {
@@ -25,6 +47,20 @@ onAuthStateChanged(auth, (user) => {
     const displayName = user.displayName || "No display name set";
     userDisplayName.innerHTML = displayName;
     loadingScreen.style.display = "none";
+
+    // NEW
+    const docRef = doc(db, "users", user.uid);
+    console.log("here");
+    try {
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.data());
+      userNameUpdate.value = docSnap.data().name;
+      updatePhone.value = docSnap.data().phone;
+      emailUpdate.value = docSnap.data().email;
+      userEmailForm.innerHTML = docSnap.data().email;
+    } catch (error) {
+      console.log(error.code);
+    }
   } else {
     console.log("No user is signed in.");
     userDisplayName.innerHTML = "Guest";
@@ -47,10 +83,64 @@ const homeBtnPressed = () => {
   homeBtn.href = "index.html";
 };
 
+// MODAL
+const openModal = () => {
+  modalEl.classList.remove("hidden");
+  overlayEl.classList.remove("hidden");
+};
+
+const closeModal = () => {
+  modalEl.classList.add("hidden");
+  overlayEl.classList.add("hidden");
+  updateDataForm.style.display = "none";
+
+  ionIcon.style.display = "block";
+
+  location.reload();
+};
+
+const modal = () => {
+  closeModalEl.addEventListener("click", closeModal);
+  overlayEl.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+  openModal();
+};
+
+const updateProfilePressed = () => {
+  updateDataForm.style.display = "block";
+  ionIcon.style.display = "none";
+  modal();
+};
+
+const updateUserBtnPressed = async (e) => {
+  e.preventDefault();
+  const docRef = doc(db, "users", auth.currentUser.uid);
+  loadingScreenUpdate.style.display = "flex";
+  try {
+    await setDoc(docRef, {
+      name: userNameUpdate.value,
+      phone: updatePhone.value,
+      email: emailUpdate.value,
+    });
+    loadingScreenUpdate.style.display = "none";
+    closeModal();
+  } catch (error) {
+    console.log(error.code);
+    loadingScreenUpdate.style.display = "none";
+  }
+};
+
 // CALLBACK
 logOut.addEventListener("click", logOutBtnPressed);
 homeBtn.addEventListener("click", homeBtnPressed);
 
+updateProfileBtn.addEventListener("click", updateProfilePressed);
+updateUserBtn.addEventListener("click", updateUserBtnPressed);
 ///////////////
 
 // FOR RANDOM FREQUENCY

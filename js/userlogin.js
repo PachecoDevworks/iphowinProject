@@ -9,24 +9,39 @@ import {
   signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
 const auth = getAuth(app);
+const db = getFirestore();
 
 const getStartedBtn = document.getElementById("getStartedBtn");
 const mainLog = document.getElementById("mainLog");
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log("User is signed in: ", user);
-    //Changing some of the status and buttons
+
     getStartedBtn.href = "index2.html";
     console.log("getStartedBtn:", getStartedBtn);
     console.log("Href updated to: ", getStartedBtn.href);
-    // getStartedBtn.addEventListener("click", (e) => {
-    //   e.preventDefault();
-    //   window.location.href = getStartedBtn.href;
-    // });
+
     mainLog.innerHTML = "LOG OUT";
     mainLog.addEventListener("click", logOutBtnPressed);
+
+    // NEW
+    const docRef = doc(db, "users", user.uid);
+    console.log("here");
+    try {
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap.data());
+    } catch (error) {
+      console.log(error.code);
+    }
   } else {
     console.log("No user is signed in.");
     mainLog.href = "login.html";

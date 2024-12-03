@@ -18,7 +18,14 @@ import {
   FacebookAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
+import {
+  getFirestore,
+  doc,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
 const auth = getAuth();
+const db = getFirestore();
 
 // START HERE
 
@@ -52,6 +59,8 @@ const resetPasswordBtn = document.getElementById("reset-password-btn");
 const resetPasswordEmail = document.getElementById("reset-password-email");
 const loginGoogleBtn = document.getElementById("login-google-btn");
 const loginFacebookBtn = document.getElementById("login-facebook-btn");
+
+const phone = document.getElementById("phone");
 
 // MODAL
 
@@ -101,6 +110,13 @@ const signUpButtonPressed = async (e) => {
     await sendEmailVerification(userCredential.user);
 
     ////////
+    // FIRESTORE DB
+    const docRef = doc(db, "users", userCredential.user.uid);
+    await setDoc(docRef, {
+      name: username.value,
+      phone: phone.value,
+      email: email.value,
+    });
     // manually logged out the user
     // await signOut(auth);
     // console.log("User created and logged out.");
@@ -145,12 +161,13 @@ const loginButtonPressed = async (e) => {
       loadingScreenLogin.style.display = "none";
       return;
     }
-    // alert("Successful");
+
     window.location.href = "index2.html";
     loginEmail.value = "";
     loginPassword.value = "";
 
     loadingScreenLogin.style.display = "none";
+    ////////
   } catch (error) {
     console.log(error.code);
     console.log(formatErrorMessage(error.code, "login"));
